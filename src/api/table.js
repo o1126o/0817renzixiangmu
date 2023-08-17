@@ -1,9 +1,50 @@
 import request from '@/utils/request'
 
-export function getList(params) {
+// 获取组织架构数据
+export function getDepartment() {
   return request({
-    url: '/vue-admin-template/table/list',
+    url: '/company/department',
     method: 'get',
-    params
+  })
+}
+
+// 获取部门负责人
+export function getManagerList() {
+  return request({
+    url: '/sys/user/simple'
+  })
+}
+
+// 新增部门  /company/department
+export function addDepartment(data) {
+  return request({
+    url: '/company/department',
+    method: 'POST',
+    data
+  })
+}
+
+// 获取部门详情  /company/department/{id}
+export function getDepartmentDetail(id) {
+  return request({
+    url: `/company/department/${id}`
+  })
+}
+
+// 编辑部门
+export function updateDepartment(data) {
+  return request({
+    url: `/company/department/${data.id}`,
+    method: 'PUT',
+    data
+  })
+}
+
+
+// 删除部门
+export function delDepartment(id) {
+  return request({
+    url: `/company/department/${id}`,
+    method: 'DELETE',
   })
 }
